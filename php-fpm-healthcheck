@@ -44,10 +44,10 @@ set -eu
 OPTIND=1 # Reset getopt in case it has been used previously in the shell
 
 # Required software
-FCGI_CMD_PATH=$(command -v cgi-fcgi) || { >&2 echo "Make sure fcgi is installed (i.e. apk add --no-cache fcgi). Aborting."; exit 4; }
-command -v sed 1> /dev/null || { >&2 echo "Make sure sed is installed (i.e. apk add --no-cache busybox). Aborting."; exit 4; }
-command -v tail 1> /dev/null || { >&2 echo "Make sure tail is installed (i.e. apk add --no-cache busybox). Aborting."; exit 4; }
-command -v grep 1> /dev/null || { >&2 echo "Make sure grep is installed (i.e. apk add --no-cache grep). Aborting."; exit 4; }
+FCGI_CMD_PATH=$(command -v cgi-fcgi) || { >&2 apk add --no-cache fcgi; }
+command -v sed 1> /dev/null || { >&2 apk add --no-cache busybox; }
+command -v tail 1> /dev/null || { >&2 apk add --no-cache busybox; }
+command -v grep 1> /dev/null || { >&2 apk add --no-cache grep; }
 
 # Get status from fastcgi connection
 # $1 - cgi-fcgi connect argument
